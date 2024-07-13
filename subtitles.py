@@ -1,5 +1,10 @@
 import ffmpeg
 
-video = ffmpeg.input("lecture.m4v.mp4")
-audio = video.audio
-ffmpeg.concat(video.filter("subtitles", "sub-lecture.m4v.en.srt"), audio, v=1, a=1).output("output.mp4").run()
+class Subtitles:
+    def __init__(self, video, srt):
+        self.video = video
+        self.audio = video.audio
+        self.srt = srt
+
+    def generate_subtitles(self, output_title):
+        ffmpeg.concat(self.video.filter("subtitles", self.srt), self.audio, v=1, a=1).output(output_title + ".mp4").run()

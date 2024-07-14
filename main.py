@@ -17,3 +17,10 @@ def convert_video():
     subtitle_converter = subtitles.Subtitles("lecture.m4v.mp4", srt_file)
     subtitle_converter.generate_subtitles("output")
     return {"result": "complete"}
+
+@app.post("videos/convert/all")
+def convert_all_videos():
+    vid_queue = video_queue.VideoQueue("lecture.m4v.mp4")
+    vid_queue.video_enqueue("/path")
+    vid_queue.start_worker()
+    return {"results", "converting"}

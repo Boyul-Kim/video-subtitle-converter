@@ -24,3 +24,5 @@ def convert_all_videos():
     vid_queue.video_enqueue("/path")
     vid_queue.start_worker()
     return {"results", "converting"}
+
+#implement routes for: rabbitMQ
